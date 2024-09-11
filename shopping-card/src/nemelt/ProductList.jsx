@@ -1,8 +1,22 @@
+import React, { useState, useEffect } from "react";
+import { useCart } from "./CartContext";
 import Table from "react-bootstrap/Table";
 
-function ProductList({ products }) {
-  const handleAddToCart = (product) => {
-    console.log(`Added ${product.title} to the cart.`);
+function ProductList() {
+  const [products, setProducts] = useState([]);
+  const { dispatch } = useCart();
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/products")
+      .then((response) => response.json())
+      .then((data) => {
+        const first10Products = data.products.slice(0, 10);
+        setProducts(first10Products);
+      });
+  }, []);
+
+  const addToCart = (product) => {
+    dispatch({ type: "ADD_ITEM", payload: product });
   };
 
   return (
@@ -24,9 +38,7 @@ function ProductList({ products }) {
             <td>${product.price}</td>
             <td>{product.category}</td>
             <td>
-              <button onClick={() => handleAddToCart(product)}>
-                Add to Cart
-              </button>
+              <button onClick={() => addToCart(product)}>Add to Cart</button>
             </td>
           </tr>
         ))}

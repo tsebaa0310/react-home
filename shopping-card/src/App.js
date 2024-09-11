@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import "./App.css";
+import { CartProvider } from "./nemelt/CartContext";
 import ProductList from "./nemelt/ProductList";
+import Cart from "./nemelt/Cart";
 
-function App() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    fetch("https://dummyjson.com/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data.products));
-  }, []);
-
+const App = () => {
   return (
-    <div>
-      <ProductList products={products} />
-    </div>
+    <CartProvider>
+      <div className="container">
+        <ProductList />
+        <Cart />
+      </div>
+    </CartProvider>
   );
-}
+};
 
 export default App;
