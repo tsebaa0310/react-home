@@ -1,13 +1,11 @@
-import ProductList from "./components/ProductList";
+import ProductList from "../components/ProductList";
 
-export default async function Page() {
-  let data = await fetch("https://fakestoreapi.com/products");
-  let products = await data.json();
-
+export default function Page() {
   return (
-    <div className="">
-      <h3 className="text-center text-xl font-semibold">Product List</h3>
-      <ProductList products={products} />
-    </div>
+    <>
+      <div className="mx-auto p-3">
+        <ProductList />
+      </div>
+    </>
   );
 }
