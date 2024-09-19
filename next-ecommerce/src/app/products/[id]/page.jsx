@@ -30,14 +30,14 @@ const page = async ({ params: { id } }) => {
           <p className=" text-slate-600 text-sm">{product.description}</p>
           <hr className="my-10" />
           <div className="flex justify-between">
-            <span>In Stock</span>
+            <span>Price:</span>
             <span className="text-1xl text-green-600 font-bold">
               {product.price} $
             </span>
           </div>
           <div className="flex justify-between items-center">
             <span className="font-medium">{"Review:"}</span>
-            <span className="font-bold">{product.rating.rate} / 5</span>
+            <span className="font-bold">{product.rating.rate} / 5★</span>
           </div>
           <div className="w-full h-3 bg-slate-300 rounded-md overflow-hidden">
             <div
