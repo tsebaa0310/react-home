@@ -1,31 +1,35 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const ProductItem = ({ productId, quantity }) => {
-  const [product, setProduct] = useState(null);
-
-  useEffect(() => {
-    async function fetchProduct() {
-      let res = await fetch(`https://fakestoreapi.com/products/${productId}`);
-      let data = await res.json();
-      setProduct(data);
-    }
-    fetchProduct();
-  }, [productId]);
+const ProductItem = ({ product, removeItem }) => {
   if (!product) return null;
+
   return (
-    <div className="mb-5">
-      <div className="grid grid-cols-3 gap-3 ">
-        <div className="relative h-[50px]">
+    <div className="mb-3 mt-5">
+      <div className="grid grid-cols-2 gap-5">
+        <div className="relative h-[55px]">
           <Image src={product.image} fill alt="image" />
         </div>
-        <div className="col-span-2">
-          <h6 className=" text-sm">{product.title}</h6>
+        <div className="w-[200px]">
+          <p className="text-black">{product.title}</p>
         </div>
       </div>
-      <div>Quantity: {quantity}</div>
+      <div className="flex justify-between mt-5">
+        <button className="text-black mx-5">✔</button>
+        <select name="" id="">
+          <option value="">1</option>
+          <option value="">2</option>
+          <option value="">3</option>
+        </select>
+        <button
+          className="text-black mx-5"
+          onClick={() => removeItem(product.id)}
+        >
+          ✗
+        </button>
+      </div>
     </div>
   );
 };

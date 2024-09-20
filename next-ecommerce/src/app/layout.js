@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Header from "../components/layout/Header";
+import Body from "../components/layout/Body";
 import Footer from "../components/layout/Footer";
 
 const geistSans = localFont({
@@ -35,10 +36,9 @@ export default function RootLayout({ children }) {
         <meta property="og:image:width" content="<generated>" />
         <meta property="og:image:height" content="<generated>" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         <Header />
+        <Body />
         {children}
         <Footer />
       </body>
