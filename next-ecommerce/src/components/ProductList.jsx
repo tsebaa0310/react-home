@@ -26,14 +26,14 @@ const ProductList = () => {
   };
 
   return (
-    <div className="p-5">
+    <div className="p-5 bg-white shadow-md rounded-lg">
       <h3 className="text-xl font-bold mb-4">All Products:</h3>
       <Slider {...settings}>
         {products.map((product) => (
           <Link
             href={`/products/${product.id}`}
             key={product.id}
-            className="card p-4 bg-white shadow-md rounded-lg h-[360px] transition-transform transform hover:-translate-y-1"
+            className="card p-4 shadow-lg rounded-lg h-[360px] transition-transform transform hover:-translate-y-1 bg-white"
           >
             <div className="w-full h-[250px] relative mb-4 overflow-hidden rounded-lg">
               <Image

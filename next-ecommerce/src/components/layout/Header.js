@@ -3,19 +3,18 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Categories } from "./Categories";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import ProductsItem from "../ProductsItem";
+// import Login from "./Login";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartItem, setCartItem] = useState(null);
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
-
-  const [cartItem, setCartItem] = useState(null);
 
   useEffect(() => {
     const fetchCartItems = async () => {
@@ -28,24 +27,81 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="bg-white shadow-md">
-      <nav className="flex items-center justify-between mx-auto">
-        <Link href="/" className="flex items-center mx-20">
+    <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+      <nav className="flex items-center justify-between p-4 mx-auto max-w-6xl">
+        <Link
+          href="/"
+          className="relative p-2 transition-transform duration-300 hover:bg-gray-100 rounded-md focus:outline-none"
+        >
           <Image
             src="/logo.png"
             alt="Logo"
-            width={50}
-            height={50}
+            width={200}
+            height={80}
             className="object-contain"
           />
-          <h1 className="mx-2">aaaaaaaa</h1>
         </Link>
-        <div className="flex">
-          <Categories />
-          <button onClick={toggleDrawer}>
+        <div className="hidden md:flex space-x-6 text-gray-700">
+          <Link
+            href="/"
+            className="hover:text-gray-500 transition duration-300"
+          >
+            HOME
+          </Link>
+          <Link
+            href="/shop"
+            className="hover:text-gray-500 transition duration-300"
+          >
+            SHOP
+          </Link>
+          <Link
+            href="/products"
+            className="hover:text-gray-500 transition duration-300"
+          >
+            PRODUCT
+          </Link>
+          <Link
+            href="/pages"
+            className="hover:text-gray-500 transition duration-300"
+          >
+            PAGES
+          </Link>
+          <Link
+            href="/blogs"
+            className="hover:text-gray-500 transition duration-300"
+          >
+            BLOGS
+          </Link>
+        </div>
+        <div className="flex items-center space-x-4">
+          <button className="relative p-2 transition-transform duration-300 hover:bg-gray-100 rounded-md focus:outline-none">
+            <Image
+              src="/search.png"
+              alt="search-icon"
+              width={25}
+              height={25}
+              className="object-contain"
+            />
+          </button>
+          <button
+            onClick={toggleDrawer}
+            className="relative p-2 transition-transform duration-300 hover:bg-gray-100 rounded-md focus:outline-none"
+          >
             <Image
               src="/cart-icons.png"
               alt="cart-icon"
+              width={25}
+              height={25}
+              className="object-contain"
+            />
+            <span className="absolute -top-1 -right-1 text-xs bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center">
+              {cartItem ? cartItem.products.length : 0}
+            </span>
+          </button>
+          <button className="relative p-2 transition-transform duration-300 hover:bg-gray-100 rounded-md focus:outline-none">
+            <Image
+              src="/user.png"
+              alt="user-icon"
               width={25}
               height={25}
               className="object-contain"
@@ -65,8 +121,8 @@ const Header = () => {
                 quantity={product.quantity}
               />
             ))}
-          <button className="bg-blue-500 text-white rounded-md py-1.5 px-5">
-            confirm
+          <button className="bg-gray-500 text-white rounded-md py-1.5 px-5 mt-4 w-full">
+            Confirm
           </button>
         </div>
       </Drawer>

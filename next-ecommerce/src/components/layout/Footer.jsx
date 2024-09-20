@@ -5,7 +5,7 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-white shadow-inner py-10">
+    <footer className=" py-10">
       <div className="mx-auto px-5">
         <div className="justify-around flex">
           <div>
@@ -49,8 +49,8 @@ const Footer = () => {
           </div>
           <div>
             <h4 className="text-lg font-bold mb-4 text-gray-800">Contact Us</h4>
-            <p className="text-gray-600">Mongolia</p>
-            <p className="text-gray-600">Ulaanbaatar</p>
+            <p className="text-gray-600">address: Mongolia</p>
+            <p className="text-gray-600">address: Ulaanbaatar</p>
             <p className="text-gray-600">Email: test@gmail.com</p>
             <p className="text-gray-600">Phone: (123) 456-7890</p>
           </div>
