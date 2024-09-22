@@ -1,13 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Cart from "../Cart";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartItem, setCartItem] = useState({ products: [] });
+  const [cartItem, setCartItem] = useState([]);
+
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+    setCartItem(cartItems);
+  }, []);
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
@@ -33,7 +38,7 @@ const Header = () => {
             {["HOME", "SHOP", "PRODUCT", "PAGES", "BLOGS"].map((item) => (
               <Link
                 key={item}
-                href={`/${item.toLowerCase()}`}
+                href="/"
                 className="hover:text-gray-500 transition duration-300"
               >
                 {item}
@@ -66,7 +71,7 @@ const Header = () => {
                 className="object-contain"
               />
               <span className="absolute -top-1 -right-1 text-xs bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center">
-                {cartItem.products.length}
+                {cartItem.length}
               </span>
             </button>
             <button
@@ -84,7 +89,12 @@ const Header = () => {
           </div>
         </nav>
       </header>
-      <Cart isOpen={isOpen} toggleDrawer={toggleDrawer} />
+      <Cart
+        isOpen={isOpen}
+        toggleDrawer={toggleDrawer}
+        cartItem={cartItem}
+        setCartItem={setCartItem}
+      />
     </>
   );
 };
