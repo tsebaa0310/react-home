@@ -26,16 +26,16 @@ export function Categories() {
           <Link
             href={`/categories/${cat}`}
             key={cat}
-            className="relative p-3 mb-10 rounded-md focus:outline-none shadow-lg transition-transform transform hover:scale-105"
+            className="relative p-2 mb-6 items-center rounded-md focus:outline-none shadow-lg transition-transform transform hover:scale-105"
           >
             <Image
               src={`/${cat}.png`}
               alt={`${cat} Image`}
-              width={200}
-              height={200}
-              className="object-contain h-[100px] mb-2"
+              width={100}
+              height={100}
+              className="object-contain h-[100px] w-[120px] mb-2"
             />
-            <p className="font-medium">{cat}</p>
+            <p className="font-xs">{cat}</p>
           </Link>
         ))}
       </div>

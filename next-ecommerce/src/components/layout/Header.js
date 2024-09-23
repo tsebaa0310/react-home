@@ -1,22 +1,19 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Cart from "../Cart";
+import { ShoppingCartContext } from "../../lib/ShoppingCartContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartItem, setCartItem] = useState([]);
-
-  useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem("shoppingCart")) || [];
-    setCartItem(cartItems);
-  }, []);
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
+
+  const { cartItem } = useContext(ShoppingCartContext);
 
   return (
     <>
@@ -70,9 +67,12 @@ const Header = () => {
                 height={25}
                 className="object-contain"
               />
-              <span className="absolute -top-1 -right-1 text-xs bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center">
-                {cartItem.length}
-              </span>
+
+              {cartItem && cartItem.length > 0 && (
+                <div className="absolute -top-1 -right-1 text-xs bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center">
+                  {cartItem.length}
+                </div>
+              )}
             </button>
             <button
               aria-label="User Profile"
@@ -89,12 +89,7 @@ const Header = () => {
           </div>
         </nav>
       </header>
-      <Cart
-        isOpen={isOpen}
-        toggleDrawer={toggleDrawer}
-        cartItem={cartItem}
-        setCartItem={setCartItem}
-      />
+      <Cart isOpen={isOpen} toggleDrawer={toggleDrawer} />
     </>
   );
 };

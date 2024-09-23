@@ -20,6 +20,10 @@ const ProductItem = ({ product, removeItem, confirmItem }) => {
           <p className="ml-4 text-xs font-semibold ">{product.title}</p>
         </div>
       </div>
+      <div className="flex justify-between">
+        <span className="text-xs font-semibold">price:</span>
+        <p className="text-xs font-semibold ">${product.price}</p>
+      </div>
       <div className="flex justify-between items-center mt-3">
         <button className="text-green-600" onClick={() => confirmItem(product)}>
           ✔

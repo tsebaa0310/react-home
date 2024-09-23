@@ -1,13 +1,14 @@
-import ProductList from "../components/ProductList";
-import { Categories } from "../components/layout/Categories";
+import Home from "../components/layout/Home";
+
+export const metadata = {
+  title: "Clothes",
+  description: "description",
+};
 
 export default function Page() {
   return (
     <>
-      <div className="mx-auto p-3">
-        <Categories />
-        <ProductList />
-      </div>
+      <Home />
     </>
   );
 }

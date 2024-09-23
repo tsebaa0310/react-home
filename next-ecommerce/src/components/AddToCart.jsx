@@ -1,20 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { ShoppingCartContext } from "../lib/ShoppingCartContext";
 
 const AddToCart = ({ product }) => {
-  const [cartItem, setCartItem] = useState([]);
-
-  useEffect(() => {
-    const shoppingCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
-    setCartItem(shoppingCart);
-  }, []);
-
-  const addToCart = (product) => {
-    const updatedCart = [...cartItem, product];
-    localStorage.setItem("shoppingCart", JSON.stringify(updatedCart));
-    setCartItem(updatedCart);
-  };
+  const { cartItem, addToCart } = useContext(ShoppingCartContext);
 
   return (
     <button

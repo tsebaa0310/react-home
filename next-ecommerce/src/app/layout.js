@@ -1,3 +1,4 @@
+"use client";
 import localFont from "next/font/local";
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
@@ -6,6 +7,7 @@ import Link from "next/link";
 import Header from "../components/layout/Header";
 import Body from "../components/layout/Body";
 import Footer from "../components/layout/Footer";
+import { ShoppingCartProvider } from "../lib/ShoppingCartContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,11 +19,6 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-
-export const metadata = {
-  title: "next-ecommerce",
-  description: "e-commerce application",
-};
 
 export default function RootLayout({ children }) {
   return (
@@ -37,10 +34,12 @@ export default function RootLayout({ children }) {
         <meta property="og:image:height" content="<generated>" />
       </head>
       <body>
-        <Header />
-        <Body />
-        {children}
-        <Footer />
+        <ShoppingCartProvider>
+          <Header />
+          <Body />
+          {children}
+          <Footer />
+        </ShoppingCartProvider>
       </body>
     </html>
   );

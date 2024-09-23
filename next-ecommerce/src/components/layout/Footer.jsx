@@ -26,7 +26,7 @@ const Footer = () => {
                   href="/products"
                   className="hover:text-blue-500 transition duration-200"
                 >
-                  Products
+                  Product
                 </Link>
               </li>
               <li>
@@ -50,7 +50,7 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-bold mb-4 text-gray-800">Contact Us</h4>
             <p className="text-gray-600">address: Mongolia</p>
-            <p className="text-gray-600">address: Ulaanbaatar</p>
+            <p className="text-gray-600">zip: 14001</p>
             <p className="text-gray-600">Email: test@gmail.com</p>
             <p className="text-gray-600">Phone: (123) 456-7890</p>
           </div>
