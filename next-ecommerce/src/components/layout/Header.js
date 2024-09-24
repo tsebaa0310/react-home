@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
+import Cookies from "js-cookie";
 import Link from "next/link";
 import Image from "next/image";
 import Cart from "../Cart";
@@ -8,12 +9,15 @@ import { ShoppingCartContext } from "../../lib/ShoppingCartContext";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { cartItem, confirmedItems } = useContext(ShoppingCartContext);
 
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState);
   };
 
-  const { cartItem } = useContext(ShoppingCartContext);
+  const handleLogout = () => {
+    Cookies.remove("token");
+  };
 
   return (
     <>
@@ -67,20 +71,38 @@ const Header = () => {
                 height={25}
                 className="object-contain"
               />
-
-              {cartItem && cartItem.length > 0 && (
+              {cartItem?.length > 0 && (
                 <div className="absolute -top-1 -right-1 text-xs bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center">
                   {cartItem.length}
                 </div>
               )}
+              {confirmedItems?.length > 0 && (
+                <div className="absolute -top-1 -right-1 text-xs bg-green-500 text-white rounded-full w-4 h-4 flex items-center justify-center">
+                  {confirmedItems.length}
+                </div>
+              )}
             </button>
-            <button
+            <Link
               aria-label="User Profile"
+              href="/register"
               className="relative p-2 transition-transform duration-300 hover:bg-gray-100 rounded-md focus:outline-none"
             >
               <Image
                 src="/user.png"
                 alt="user-icon"
+                width={25}
+                height={25}
+                className="object-contain"
+              />
+            </Link>
+            <button
+              aria-label="Quit"
+              onClick={handleLogout}
+              className="relative p-2 transition-transform duration-300 hover:bg-gray-100 rounded-md focus:outline-none"
+            >
+              <Image
+                src="/quit.png"
+                alt="quit-icon"
                 width={25}
                 height={25}
                 className="object-contain"
