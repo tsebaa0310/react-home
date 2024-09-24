@@ -42,6 +42,7 @@ export const ShoppingCartProvider = ({ children }) => {
   const clearCart = () => {
     localStorage.clear();
     setCartItem([]);
+    setConfirmedItems([]);
   };
 
   return (
