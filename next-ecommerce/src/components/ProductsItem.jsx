@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
+import { ShoppingCartContext } from "../lib/ShoppingCartContext";
 
-const ProductItem = ({ product, removeItem, confirmItem }) => {
+const ProductItem = ({ product, removeItem }) => {
+  const { confirmItem } = useContext(ShoppingCartContext);
   if (!product) return null;
 
   return (
@@ -21,7 +23,7 @@ const ProductItem = ({ product, removeItem, confirmItem }) => {
         </div>
       </div>
       <div className="flex justify-between">
-        <span className="text-xs font-semibold">price:</span>
+        <span className="text-xs font-semibold">Price:</span>
         <p className="text-xs font-semibold ">${product.price}</p>
       </div>
       <div className="flex justify-between items-center mt-3">
@@ -29,9 +31,9 @@ const ProductItem = ({ product, removeItem, confirmItem }) => {
           ✔
         </button>
         <select>
-          <option value="">1</option>
-          <option value="">2</option>
-          <option value="">3</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
         </select>
         <button className="text-red-600" onClick={() => removeItem(product.id)}>
           ✗
