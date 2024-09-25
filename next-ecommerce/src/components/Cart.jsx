@@ -34,7 +34,7 @@ const Cart = ({ isOpen, toggleDrawer }) => {
         </button>
         <p className="m-3 text-center">your confirm items here.</p>
         <Link
-          href="/checkout"
+          href="/login"
           className="bg-green-500 text-white text-center w-full rounded-md py-2 mt-4 block"
         >
           Confirm Items

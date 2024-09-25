@@ -21,7 +21,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+      <header className="bg-white shadow-md z-50">
         <nav className="flex items-center justify-between p-4 mx-auto max-w-6xl">
           <Link
             href="/"

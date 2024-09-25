@@ -5,10 +5,10 @@ import { FaFacebook, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className=" py-10">
-      <div className="mx-auto px-5">
-        <div className="justify-around flex">
-          <div>
+    <footer className="py-10">
+      <div className="max-w-7xl mx-auto px-5">
+        <div className="flex flex-col md:flex-row justify-between md:justify-around">
+          <div className="mb-6 md:mb-0">
             <h4 className="text-lg font-bold mb-4 text-gray-800">
               Quick Links
             </h4>
@@ -47,13 +47,15 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div>
+
+          <div className="mb-6 md:mb-0">
             <h4 className="text-lg font-bold mb-4 text-gray-800">Contact Us</h4>
-            <p className="text-gray-600">address: Mongolia</p>
-            <p className="text-gray-600">zip: 14001</p>
+            <p className="text-gray-600">Address: Mongolia</p>
+            <p className="text-gray-600">Zip: 14001</p>
             <p className="text-gray-600">Email: test@gmail.com</p>
             <p className="text-gray-600">Phone: (123) 456-7890</p>
           </div>
+
           <div>
             <h4 className="text-lg font-bold mb-4 text-gray-800">Follow Us</h4>
             <div className="flex space-x-4">
@@ -81,7 +83,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <hr className="my-5 border-gray-300" />
+        <hr className="my-8 border-gray-300" />
         <p className="text-center text-sm text-gray-600">
           © 2024 . All rights reserved.
         </p>

@@ -10,7 +10,7 @@ const Page = async ({ params: { slug } }) => {
 
   return (
     <>
-      <div className="my-5 text-center">
+      <div className="my-5 text-center mt-10">
         <h2 className="text-3xl font-bold">Category: {slug}</h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10 p-5">

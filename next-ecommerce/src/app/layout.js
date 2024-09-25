@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Link from "next/link";
 import Header from "../components/layout/Header";
-import Body from "../components/layout/Body";
 import Footer from "../components/layout/Footer";
 import { ShoppingCartProvider } from "../lib/ShoppingCartContext";
 
@@ -36,7 +35,6 @@ export default function RootLayout({ children }) {
       <body>
         <ShoppingCartProvider>
           <Header />
-          <Body />
           {children}
           <Footer />
         </ShoppingCartProvider>
