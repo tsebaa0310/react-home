@@ -40,10 +40,10 @@ const Page = ({ params: { code } }) => {
         <li>Phone: {country.phone}</li>
         <li>Capital: {country.capital}</li>
         <li>Currency: {country.currency}</li>
-        <ul>
-          Subdivisions:
-          <li>{country.subdivisions.map((e) => e.name).join(", ")}</li>
-        </ul>
+
+        <li>
+          Subdivisions: {country.subdivisions.map((e) => e.name).join(", ")}
+        </li>
       </ul>
     </div>
   );
