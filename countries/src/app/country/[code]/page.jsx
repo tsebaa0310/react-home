@@ -25,26 +25,46 @@ const Page = ({ params: { code } }) => {
     variables: { code: code },
   });
 
-  if (loading) return "Loading";
-  if (error) return "Error";
+  if (loading)
+    return <div className="text-center text-gray-500">Loading...</div>;
+  if (error)
+    return (
+      <div className="text-center text-red-500">Error: {error.message}</div>
+    );
 
   const country = data.country;
 
   return (
-    <div>
-      <h2>Code: {code}</h2>
-      <ul>
-        <li>Name: {country.name}</li>
-        <li>flag: {country.emoji}</li>
-        <li>languages: {country.languages[0].native}</li>
-        <li>Phone: {country.phone}</li>
-        <li>Capital: {country.capital}</li>
-        <li>Currency: {country.currency}</li>
-
-        <li>
-          Subdivisions: {country.subdivisions.map((e) => e.name).join(", ")}
-        </li>
-      </ul>
+    <div className="min-h-screen flex flex-col items-center bg-gradient-to-r from-blue-50 to-indigo-100 py-8">
+      <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">
+        Country Information: {code}
+      </h2>
+      <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-4xl">
+        <ul className="space-y-4 text-lg">
+          <li>
+            <strong>Name:</strong> {country.name}
+          </li>
+          <li>
+            <strong>Flag:</strong> {country.emoji}
+          </li>
+          <li>
+            <strong>Language:</strong> {country.languages[0].native}
+          </li>
+          <li>
+            <strong>Phone Code:</strong> +{country.phone}
+          </li>
+          <li>
+            <strong>Capital:</strong> {country.capital}
+          </li>
+          <li>
+            <strong>Currency:</strong> {country.currency}
+          </li>
+          <li>
+            <strong>Subdivisions:</strong>
+            {country.subdivisions.map((e) => e.name).join(", ")}
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
